@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctpeudf85hj4y"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_ga4et"]
+[ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="2_rpowd"]
+[ext_resource type="Texture2D" uid="uid://dv0gkuyeo30th" path="res://assets/images/Full Sheet.png" id="3_3qiym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtwkn"]
+radius = 13.0384
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bow_sprite")]
+motion_mode = 1
+script = ExtResource("1_ga4et")
+movement_speed = 200.0
+sprite = NodePath("Sprite2D")
+bow_sprite = NodePath("RotAnchor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_gtwkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_rpowd")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="RotAnchor" type="Node2D" parent="."]
+
+[node name="Bow" type="Sprite2D" parent="RotAnchor"]
+position = Vector2(21, -4.54747e-13)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_3qiym")
+region_enabled = true
+region_rect = Rect2(48, 320, 16, 16)
