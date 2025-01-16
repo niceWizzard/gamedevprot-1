@@ -14,12 +14,20 @@ config/name="GameDevProt 1"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=480
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [input]
 
