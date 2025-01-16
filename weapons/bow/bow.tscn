@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpx2cudt7cjbs"]
+
+[ext_resource type="Texture2D" uid="uid://dv0gkuyeo30th" path="res://assets/images/Full Sheet.png" id="1_oe8jn"]
+[ext_resource type="Script" path="res://weapons/bow/bow.gd" id="2_qlb7r"]
+[ext_resource type="PackedScene" uid="uid://38uhjhmgyai6" path="res://weapons/arrow/arrow.tscn" id="3_pwr1l"]
+
+[node name="Bow" type="Sprite2D" node_paths=PackedStringArray("arrow_spawn", "arrow_placeholder_sprite")]
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_oe8jn")
+region_enabled = true
+region_rect = Rect2(48, 320, 16, 16)
+script = ExtResource("2_qlb7r")
+reload_time = 1.0
+arrow_spawn = NodePath("Marker2D")
+arrow = ExtResource("3_pwr1l")
+arrow_placeholder_sprite = NodePath("Sprite2D")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1.41421, -1.41421)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.41421, -1.41421)
+texture = ExtResource("1_oe8jn")
+region_enabled = true
+region_rect = Rect2(64, 320, 16, 16)

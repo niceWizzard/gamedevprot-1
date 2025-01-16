@@ -9,4 +9,3 @@ anchor_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("1_ou1ea")]
 position = Vector2(197, 193)
-movement_speed = 200.0

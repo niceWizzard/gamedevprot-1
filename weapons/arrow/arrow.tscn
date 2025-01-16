@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://38uhjhmgyai6"]
+
+[ext_resource type="Texture2D" uid="uid://dv0gkuyeo30th" path="res://assets/images/Full Sheet.png" id="1_5nlea"]
+[ext_resource type="Script" path="res://weapons/arrow/projectile.gd" id="2_qkxua"]
+
+[node name="Arrow" type="Sprite2D"]
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5nlea")
+region_enabled = true
+region_rect = Rect2(64, 320, 16, 16)
+script = ExtResource("2_qkxua")

@@ -5,14 +5,20 @@ extends CharacterBody2D
 
 @export_category("Components")
 @export var sprite : Sprite2D
-@export var bow_sprite : Node2D
+@export var bow_anchor : Node2D
+@export var bow : Bow
 
 var facing_direction = 1
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action("attack"):
+		var dir = global_position.direction_to(get_global_mouse_position())
+		bow.shoot(dir)
 
 func _process(delta: float) -> void:
 	var mouse = get_global_mouse_position()
 	var mouse_dir = global_position.direction_to(mouse)
-	bow_sprite.global_rotation = mouse_dir.angle()
+	bow_anchor.global_rotation = mouse_dir.angle() 
 		
 
 func _physics_process(delta: float) -> void:
