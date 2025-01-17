@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpx2cudt7cjbs" path="res://weapons/bow/bow.tscn" id="3_38ax3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtwkn"]
-radius = 13.0384
+radius = 9.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bow_anchor", "bow")]
 motion_mode = 1
@@ -16,7 +16,7 @@ bow_anchor = NodePath("RotAnchor")
 bow = NodePath("RotAnchor/Bow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_gtwkn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
