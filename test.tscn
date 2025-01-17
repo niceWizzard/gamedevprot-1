@@ -17,6 +17,7 @@ tile_map_data = PackedByteArray("AAAVAPr/AAABAAQAAAAUAPr/AAABAAQAAAATAPr/AAABAAQ
 tile_set = ExtResource("1_vc6cu")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
