@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnssoffe62kwe"]
+[gd_scene load_steps=8 format=3 uid="uid://cnssoffe62kwe"]
 
 [ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="1_eyx3f"]
 [ext_resource type="Script" path="res://mobs/ghost/ghost.gd" id="2_65swf"]
+[ext_resource type="Script" path="res://lib/sm/state_machine.gd" id="3_5wuc5"]
+[ext_resource type="Script" path="res://mobs/ghost/states/idle.gd" id="4_lb6c1"]
+[ext_resource type="Script" path="res://mobs/ghost/states/chasing.gd" id="5_m4c0p"]
+[ext_resource type="Script" path="res://mobs/ghost/states/attacking.gd" id="6_btghn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkw7h"]
 radius = 88.7426
@@ -18,5 +22,23 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
 shape = SubResource("CircleShape2D_jkw7h")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_5wuc5")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("chasing")]
+script = ExtResource("4_lb6c1")
+chasing = NodePath("../chasing")
+
+[node name="chasing" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking", "idle")]
+script = ExtResource("5_m4c0p")
+attacking = NodePath("../attacking")
+idle = NodePath("../idle")
+
+[node name="attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("chasing", "idle")]
+script = ExtResource("6_btghn")
+chasing = NodePath("../chasing")
+idle = NodePath("../idle")
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
