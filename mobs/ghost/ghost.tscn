@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnssoffe62kwe"]
+
+[ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="1_eyx3f"]
+[ext_resource type="Script" path="res://mobs/ghost/ghost.gd" id="2_65swf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkw7h"]
+radius = 88.7426
+
+[node name="ghost" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_eyx3f")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+script = ExtResource("2_65swf")
+
+[node name="Player Detector" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
+shape = SubResource("CircleShape2D_jkw7h")
+
+[connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
