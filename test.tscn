@@ -42,3 +42,42 @@ position = Vector2(366, 287)
 
 [node name="ghost5" parent="." instance=ExtResource("4_kgev8")]
 position = Vector2(424, 248)
+
+[node name="ghost6" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(666, -326)
+
+[node name="ghost7" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(-74, 80)
+
+[node name="ghost16" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(166, -112)
+
+[node name="ghost17" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(22, -216)
+
+[node name="ghost18" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(105, -392)
+
+[node name="ghost8" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(1084, -42)
+
+[node name="ghost9" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(1788, -30)
+
+[node name="ghost10" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(2162, 174)
+
+[node name="ghost11" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(2086, 224)
+
+[node name="ghost12" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(2162, 272)
+
+[node name="ghost13" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(2226, 218)
+
+[node name="ghost14" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(2238, 284)
+
+[node name="ghost15" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(2272, 170)
