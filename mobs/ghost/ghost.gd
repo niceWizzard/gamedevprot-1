@@ -2,7 +2,12 @@ extends Sprite2D
 class_name Ghost
 
 @export var movement_speed := 32. * 3.
-var player : CharacterBody2D = null
+var player : CharacterBody2D = null:
+	get:
+		if is_instance_valid(player):
+			return player 
+		else: 
+			return null
 
 const FIREBALL_SCN := preload("uid://dlkasqddgikyc")
 
