@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlkasqddgikyc"]
+
+[ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="1_5j4t4"]
+[ext_resource type="Script" path="res://lib/hithurtbox/hitbox.gd" id="2_grvyr"]
+[ext_resource type="Script" path="res://weapons/fire/fireball.gd" id="2_snvoh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j236"]
+radius = 3.53553
+
+[node name="Fireball" type="Sprite2D"]
+rotation = -1.0472
+scale = Vector2(2, 2)
+texture = ExtResource("1_5j4t4")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+script = ExtResource("2_snvoh")
+movement_speed = 192.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 27
+script = ExtResource("2_grvyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_0j236")
+
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]

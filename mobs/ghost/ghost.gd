@@ -4,6 +4,7 @@ class_name Ghost
 @export var movement_speed := 32. * 3.
 var player : CharacterBody2D = null
 
+const FIREBALL_SCN := preload("uid://dlkasqddgikyc")
 
 
 var velocity : Vector2
