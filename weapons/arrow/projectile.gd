@@ -35,3 +35,8 @@ func _on_hitbox_body_entered(body:Node2D) -> void:
 	detector.set_deferred("disabled", true)
 	await get_tree().create_timer(0.5).timeout
 	fade_out()
+
+
+func _on_hitbox_on_hit(hurtbox: Hurtbox) -> void:
+	hurtbox.hb_owner.queue_free()
+	fade_out()

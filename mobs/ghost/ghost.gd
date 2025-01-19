@@ -15,7 +15,6 @@ func _on_player_detector_body_entered(body:Node2D) -> void:
 	player = body
 
 func _process(_delta: float) -> void:
-	print(velocity.x)
 	if abs(velocity.x) > 0.01:
 		flip_h = !(sign(velocity.x) + 1)
 
