@@ -16,6 +16,7 @@ texture = ExtResource("1_eyx3f")
 region_enabled = true
 region_rect = Rect2(16, 16, 16, 16)
 script = ExtResource("2_65swf")
+movement_speed = 64.0
 
 [node name="Player Detector" type="Area2D" parent="."]
 monitorable = false

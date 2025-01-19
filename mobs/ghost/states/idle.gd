@@ -9,5 +9,6 @@ func on_process(delta : float) -> RState:
         return a
     if ghost.player:
         return chasing
+    ghost.set_vel(Vector2.ZERO)
     return null
     
