@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctpeudf85hj4y"]
+[gd_scene load_steps=8 format=3 uid="uid://ctpeudf85hj4y"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ga4et"]
 [ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="2_rpowd"]
 [ext_resource type="PackedScene" uid="uid://dpx2cudt7cjbs" path="res://weapons/bow/bow.tscn" id="3_38ax3"]
 [ext_resource type="Script" path="res://lib/hithurtbox/hurtbox.gd" id="4_551qe"]
+[ext_resource type="Script" path="res://lib/health.gd" id="5_c6muu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtwkn"]
 radius = 9.0
@@ -12,7 +13,7 @@ radius = 9.0
 radius = 7.0
 height = 22.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bow_anchor", "bow")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bow_anchor", "bow", "health")]
 collision_layer = 2
 collision_mask = 25
 motion_mode = 1
@@ -21,6 +22,7 @@ movement_speed = 96.0
 sprite = NodePath("Sprite2D")
 bow_anchor = NodePath("RotAnchor")
 bow = NodePath("RotAnchor/Bow")
+health = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -46,3 +48,9 @@ script = ExtResource("4_551qe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_ojest")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_c6muu")
+
+[connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]
+[connection signal="on_health_runout" from="Health" to="." method="_on_health_on_health_runout"]

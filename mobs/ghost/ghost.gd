@@ -2,6 +2,8 @@ extends Sprite2D
 class_name Ghost
 
 @export var movement_speed := 32. * 3.
+@export var health : Health
+
 var player : CharacterBody2D = null:
 	get:
 		if is_instance_valid(player):
@@ -26,3 +28,12 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	global_position += velocity * delta
+
+
+func _on_health_on_health_runout() -> void:
+	queue_free()
+
+
+func _on_hurtbox_on_hit(damage_info:DamageInfo) -> void:
+	health.health -= damage_info.amount
+	

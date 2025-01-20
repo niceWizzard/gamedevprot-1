@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnssoffe62kwe"]
+[gd_scene load_steps=11 format=3 uid="uid://cnssoffe62kwe"]
 
 [ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="1_eyx3f"]
 [ext_resource type="Script" path="res://mobs/ghost/ghost.gd" id="2_65swf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://mobs/ghost/states/chasing.gd" id="5_m4c0p"]
 [ext_resource type="Script" path="res://mobs/ghost/states/attacking.gd" id="6_btghn"]
 [ext_resource type="Script" path="res://lib/hithurtbox/hurtbox.gd" id="7_ol8q8"]
+[ext_resource type="Script" path="res://lib/health.gd" id="8_lhkon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkw7h"]
 radius = 88.7426
@@ -14,13 +15,14 @@ radius = 88.7426
 [sub_resource type="CircleShape2D" id="CircleShape2D_qy5vr"]
 radius = 6.0208
 
-[node name="ghost" type="Sprite2D"]
+[node name="ghost" type="Sprite2D" node_paths=PackedStringArray("health")]
 scale = Vector2(2, 2)
 texture = ExtResource("1_eyx3f")
 region_enabled = true
 region_rect = Rect2(16, 16, 16, 16)
 script = ExtResource("2_65swf")
 movement_speed = 64.0
+health = NodePath("Health")
 
 [node name="Player Detector" type="Area2D" parent="."]
 visible = false
@@ -58,4 +60,9 @@ script = ExtResource("7_ol8q8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_qy5vr")
 
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_lhkon")
+
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]
+[connection signal="on_health_runout" from="Health" to="." method="_on_health_on_health_runout"]

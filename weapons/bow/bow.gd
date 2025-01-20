@@ -14,7 +14,7 @@ func shoot(dir : Vector2) -> void:
 	if !can_shoot:
 		return
 	var arrow_obj = arrow.instantiate() as Projectile
-	arrow_obj.setup(dir)
+	arrow_obj.setup(dir, get_parent())
 	arrow_obj.global_position = arrow_spawn.global_position
 	get_tree().root.add_child(arrow_obj)
 	can_shoot = false
