@@ -51,6 +51,7 @@ shape = SubResource("CapsuleShape2D_ojest")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_c6muu")
+max_health = 10000.0
 
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]
 [connection signal="on_health_runout" from="Health" to="." method="_on_health_on_health_runout"]

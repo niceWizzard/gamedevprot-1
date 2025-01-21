@@ -17,6 +17,9 @@ var player : CharacterBody2D = null:
 const FIREBALL_SCN := preload("uid://dlkasqddgikyc")
 
 
+func _ready() -> void:
+	(sprite.material as ShaderMaterial).set_shader_parameter("y_timing", randf_range(1., 2.5))
+
 func set_vel(v : Vector2, weight:= 0.35) -> void:
 	velocity = lerp(velocity, v, weight)
 

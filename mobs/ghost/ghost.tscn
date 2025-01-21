@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnssoffe62kwe"]
+[gd_scene load_steps=14 format=3 uid="uid://cnssoffe62kwe"]
 
 [ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="1_eyx3f"]
+[ext_resource type="Shader" path="res://mobs/ghost/ghost.gdshader" id="2_7g2fm"]
 [ext_resource type="Script" path="res://mobs/ghost/ghost.gd" id="2_65swf"]
 [ext_resource type="Script" path="res://lib/sm/state_machine.gd" id="3_5wuc5"]
 [ext_resource type="Script" path="res://mobs/ghost/states/idle.gd" id="4_lb6c1"]
@@ -9,6 +10,12 @@
 [ext_resource type="Script" path="res://lib/hithurtbox/hurtbox.gd" id="7_ol8q8"]
 [ext_resource type="Script" path="res://lib/health.gd" id="8_lhkon"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlaj3"]
+resource_local_to_scene = true
+shader = ExtResource("2_7g2fm")
+shader_parameter/x_offset = 0.02
+shader_parameter/y_timing = 1.4
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkw7h"]
 radius = 88.7426
 
@@ -16,43 +23,6 @@ radius = 88.7426
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qh5r0"]
 radius = 8.0
-
-[sub_resource type="Animation" id="Animation_cvylm"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 1),
-"transitions": PackedFloat32Array(1.8025, 2.14355, 0.406126),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_wyg8j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0et5q"]
-_data = {
-"RESET": SubResource("Animation_wyg8j"),
-"idle": SubResource("Animation_cvylm")
-}
 
 [node name="ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "health")]
 collision_layer = 4
@@ -64,6 +34,7 @@ health = NodePath("Health")
 steer_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jlaj3")
 scale = Vector2(2, 2)
 texture = ExtResource("1_eyx3f")
 region_enabled = true
@@ -110,12 +81,6 @@ script = ExtResource("8_lhkon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qh5r0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0et5q")
-}
-autoplay = "idle"
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]
