@@ -17,7 +17,7 @@ shader_parameter/x_offset = 0.02
 shader_parameter/y_timing = 1.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jkw7h"]
-radius = 88.7426
+radius = 154.029
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qy5vr"]
 
