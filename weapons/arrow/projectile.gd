@@ -10,7 +10,12 @@ var direction := Vector2.ZERO
 
 var is_fading := false
 var travelled := 0.
-var origin_node : Node2D
+var origin_node : Node2D:
+	get:
+		if is_instance_valid(origin_node):
+			return origin_node
+		else:
+			return null
 
 func setup(dir : Vector2, origin: Node):
 	direction = dir.normalized()
