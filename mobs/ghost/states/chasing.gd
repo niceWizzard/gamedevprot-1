@@ -1,5 +1,6 @@
 extends "state.gd"
 
+
 @export_category("States")
 @export var attacking : RState
 @export var idle : RState
@@ -26,6 +27,12 @@ func on_physics_process(delta : float) -> RState:
 		return idle
 	
 	var dir = ghost.global_position.direction_to(ghost.player.global_position)
-	ghost.set_vel(dir.rotated(bias) * ghost.movement_speed)
+	var steer := ghost.calc_steer_dir(dir) * ghost.movement_speed - ghost.velocity 
+	ghost.velocity += steer.rotated(bias)  * delta * 2
+
 	return null
 	
+
+
+
+
