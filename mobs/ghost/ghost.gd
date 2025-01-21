@@ -1,9 +1,11 @@
 extends CharacterBody2D
 class_name Ghost
 
+@export var animation_player : AnimationPlayer
 @export var sprite : Sprite2D
 @export var movement_speed := 32. * 3.
 @export var health : Health
+@export var health_bar : HealthBar
 @export_flags_2d_physics var steer_mask: int
 
 
@@ -37,9 +39,15 @@ func _physics_process(delta: float) -> void:
 func _on_health_on_health_runout() -> void:
 	queue_free()
 
+func start_hurt_anim() -> void:
+	if animation_player.is_playing():
+		return
+	animation_player.play("hurt")
 
 func _on_hurtbox_on_hit(damage_info:DamageInfo) -> void:
 	health.health -= damage_info.amount
+	health_bar.set_current(health.health)
+	start_hurt_anim()
 	
 func calc_steer_dir(desired_dir : Vector2, ray_count := 16, ray_length:= 32. * 1,mask : int= steer_mask) -> Vector2:
 	var rays : Array[Vector2] = []

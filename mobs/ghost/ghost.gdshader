@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform float x_offset = .06;
 uniform float y_timing = 1.;
+uniform float hurt_value = 1. ;
 
 void vertex() {
 	VERTEX.x += cos(TIME * 2.* y_timing + VERTEX.y * x_offset);
@@ -9,7 +10,7 @@ void vertex() {
 }
 
 void fragment() {
-	// Called for every pixel the material is visible on.
+	COLOR.rgb = mix(COLOR.rgb, COLOR.rgb * vec3(1., 0.,0.) * COLOR.a , hurt_value);
 }
 
 
