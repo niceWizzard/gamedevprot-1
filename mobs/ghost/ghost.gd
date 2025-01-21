@@ -38,7 +38,7 @@ func _on_health_on_health_runout() -> void:
 func _on_hurtbox_on_hit(damage_info:DamageInfo) -> void:
 	health.health -= damage_info.amount
 	
-func calc_steer_dir(desired_dir : Vector2, ray_count := 16, mask : int= steer_mask) -> Vector2:
+func calc_steer_dir(desired_dir : Vector2, ray_count := 16, ray_length:= 32. * 1,mask : int= steer_mask) -> Vector2:
 	var rays : Array[Vector2] = []
 	var interests : Array[float] = []
 	for i in range(ray_count):
@@ -54,7 +54,7 @@ func calc_steer_dir(desired_dir : Vector2, ray_count := 16, mask : int= steer_ma
 		var ray := rays[i]
 		var query := PhysicsRayQueryParameters2D.create(
 			global_position,
-			global_position + ray * 32 * 1.,
+			global_position + ray * ray_length,
 			mask,
 			[self]
 		)
