@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export_category("Stats")
 @export var movement_speed := 400.
