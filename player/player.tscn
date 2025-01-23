@@ -36,8 +36,9 @@ region_rect = Rect2(16, 0, 16, 16)
 
 [node name="RotAnchor" type="Node2D" parent="."]
 
-[node name="Bow" parent="RotAnchor" instance=ExtResource("3_38ax3")]
+[node name="Bow" parent="RotAnchor" node_paths=PackedStringArray("bow_owner") instance=ExtResource("3_38ax3")]
 position = Vector2(21, 0)
+bow_owner = NodePath("../..")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
