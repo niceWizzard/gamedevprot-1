@@ -20,7 +20,7 @@ func on_physics_process(delta : float) -> RState:
 	if ghost.player == null:
 		return idle
 	var distance := ghost.global_position.distance_to(ghost.player.global_position)
-	if distance < 32 * 2.:
+	if distance < 32 * 3.:
 		return attacking
 	elif distance > 32. * 10.:
 		ghost.player = null
