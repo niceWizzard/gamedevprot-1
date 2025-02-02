@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ga4et"]
 [ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="2_rpowd"]
-[ext_resource type="PackedScene" uid="uid://dpx2cudt7cjbs" path="res://weapons/bow/bow.tscn" id="3_38ax3"]
 [ext_resource type="Script" path="res://lib/hithurtbox/hurtbox.gd" id="4_551qe"]
 [ext_resource type="Script" path="res://lib/health.gd" id="5_c6muu"]
+[ext_resource type="PackedScene" uid="uid://dy6k6uwujp8l2" path="res://weapons/gun/gun.tscn" id="5_qsws5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtwkn"]
 radius = 9.0
@@ -13,15 +13,15 @@ radius = 9.0
 radius = 7.0
 height = 22.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "bow_anchor", "bow", "health")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "gun_anchor", "gun", "health")]
 collision_layer = 2
 collision_mask = 25
 motion_mode = 1
 script = ExtResource("1_ga4et")
 movement_speed = 96.0
 sprite = NodePath("Sprite2D")
-bow_anchor = NodePath("RotAnchor")
-bow = NodePath("RotAnchor/Bow")
+gun_anchor = NodePath("RotAnchor")
+gun = NodePath("RotAnchor/Gun")
 health = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,10 +35,11 @@ region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="RotAnchor" type="Node2D" parent="."]
+rotation = -1.5708
 
-[node name="Bow" parent="RotAnchor" node_paths=PackedStringArray("bow_owner") instance=ExtResource("3_38ax3")]
-position = Vector2(21, 0)
-bow_owner = NodePath("../..")
+[node name="Gun" parent="RotAnchor" node_paths=PackedStringArray("gun_owner") instance=ExtResource("5_qsws5")]
+position = Vector2(29, -4)
+gun_owner = NodePath("../..")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2

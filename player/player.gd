@@ -6,8 +6,8 @@ class_name Player
 
 @export_category("Components")
 @export var sprite : Sprite2D
-@export var bow_anchor : Node2D
-@export var bow : Bow
+@export var gun_anchor : Node2D
+@export var gun : Gun
 @export var health : Health
 
 
@@ -16,12 +16,13 @@ var facing_direction = 1
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("attack"):
 		var dir = global_position.direction_to(get_global_mouse_position())
-		bow.shoot(dir)
+		gun.shoot(dir)
 
 func _process(delta: float) -> void:
 	var mouse = get_global_mouse_position()
 	var mouse_dir = global_position.direction_to(mouse)
-	bow_anchor.global_rotation = mouse_dir.angle() 
+	gun_anchor.global_rotation = mouse_dir.angle() 
+	gun_anchor.scale.y = -1 if abs(gun_anchor.global_rotation_degrees) >= 90  else 1
 		
 
 func _physics_process(delta: float) -> void:

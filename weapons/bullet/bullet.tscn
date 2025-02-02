@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjl1250usgtsl"]
+
+[ext_resource type="Texture2D" uid="uid://cb6om3sxwqii3" path="res://assets/images/bullet_sheet.png" id="1_bosw3"]
+[ext_resource type="Script" path="res://weapons/arrow/projectile.gd" id="2_6xhgo"]
+[ext_resource type="Script" path="res://lib/hithurtbox/hitbox.gd" id="3_osnfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8t3yh"]
+radius = 3.0
+
+[node name="bullet" type="Node2D" node_paths=PackedStringArray("detector", "hitbox")]
+script = ExtResource("2_6xhgo")
+detector = NodePath("Hitbox/CollisionShape2D")
+hitbox = NodePath("Hitbox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_bosw3")
+region_enabled = true
+region_rect = Rect2(175, 30, 40, 25)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 20
+script = ExtResource("3_osnfw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(6, 0)
+shape = SubResource("CircleShape2D_8t3yh")

@@ -1,10 +1,11 @@
-extends Sprite2D
+extends Node2D
 class_name Projectile
 
 @export var damage:= 30
 @export var max_distance := 32. * 5.
 @export var movement_speed := 32. * 8.
 @export var detector : CollisionShape2D
+@export var hitbox : Hitbox
 
 var direction := Vector2.ZERO
 
@@ -17,9 +18,13 @@ var origin_node : Node2D:
 		else:
 			return null
 
+func _ready() -> void:
+	hitbox.body_entered.connect(_on_hitbox_body_entered)
+	hitbox.on_hit.connect(_on_hitbox_on_hit)
+
 func setup(dir : Vector2, origin: Node):
 	direction = dir.normalized()
-	global_rotation = direction.angle() +  PI/4
+	global_rotation = direction.angle() 
 	origin_node = origin
 
 func _physics_process(delta: float) -> void:

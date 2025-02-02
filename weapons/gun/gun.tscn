@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy6k6uwujp8l2"]
+
+[ext_resource type="Texture2D" uid="uid://c7oilnple7y21" path="res://assets/images/weapon.png" id="1_akpv2"]
+[ext_resource type="Script" path="res://weapons/gun/gun.gd" id="2_lgg2x"]
+[ext_resource type="PackedScene" uid="uid://cjl1250usgtsl" path="res://weapons/bullet/bullet.tscn" id="3_w20vp"]
+
+[node name="Gun" type="Sprite2D" node_paths=PackedStringArray("bullet_spawn")]
+position = Vector2(3, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_akpv2")
+region_enabled = true
+region_rect = Rect2(64, 96, 24, 16)
+script = ExtResource("2_lgg2x")
+bullet_spawn = NodePath("Marker2D")
+bullet = ExtResource("3_w20vp")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(4.66667, 1.33333)

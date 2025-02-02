@@ -1,5 +1,5 @@
 class_name Bow
-extends Sprite2D
+extends Node2D
 
 @export_category("Stats")
 @export var reload_time := .5
