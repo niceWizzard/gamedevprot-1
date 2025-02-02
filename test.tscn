@@ -27,10 +27,10 @@ script = ExtResource("2_ca84g")
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_ou1ea")]
-position = Vector2(627, 381)
+position = Vector2(485, 194)
 
 [node name="ghost" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(445, 288)
+position = Vector2(531, 318)
 
 [node name="ghost2" parent="." instance=ExtResource("4_kgev8")]
 position = Vector2(638, 148)
@@ -42,7 +42,16 @@ position = Vector2(389, 203)
 position = Vector2(366, 287)
 
 [node name="ghost5" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(424, 248)
+position = Vector2(439, 328)
+
+[node name="ghost19" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(622, 284)
+
+[node name="ghost20" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(558, 76)
+
+[node name="ghost21" parent="." instance=ExtResource("4_kgev8")]
+position = Vector2(409, 82)
 
 [node name="ghost6" parent="." instance=ExtResource("4_kgev8")]
 position = Vector2(666, -326)
