@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctpeudf85hj4y"]
+[gd_scene load_steps=11 format=3 uid="uid://ctpeudf85hj4y"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ga4et"]
 [ext_resource type="Texture2D" uid="uid://bssn5jhfymdfn" path="res://assets/images/Dungeon_Character_2.png" id="2_rpowd"]
 [ext_resource type="Script" path="res://lib/hithurtbox/hurtbox.gd" id="4_551qe"]
 [ext_resource type="Script" path="res://lib/health.gd" id="5_c6muu"]
 [ext_resource type="PackedScene" uid="uid://dy6k6uwujp8l2" path="res://weapons/gun/gun.tscn" id="5_qsws5"]
+[ext_resource type="Script" path="res://lib/sm/state_machine.gd" id="6_46k3f"]
+[ext_resource type="Script" path="res://player/states/normal.gd" id="7_17jpf"]
+[ext_resource type="Script" path="res://lib/sm/state.gd" id="8_qo3u8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtwkn"]
 radius = 9.0
@@ -53,6 +56,19 @@ shape = SubResource("CapsuleShape2D_ojest")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_c6muu")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_46k3f")
+initial_state = NodePath("Normal")
+
+[node name="Normal" type="Node" parent="StateMachine"]
+script = ExtResource("7_17jpf")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("8_qo3u8")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("8_qo3u8")
 
 [connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]
 [connection signal="on_health_runout" from="Health" to="." method="_on_health_on_health_runout"]
