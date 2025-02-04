@@ -2,14 +2,18 @@ class_name RState
 extends Node
 
 var sm_owner : Node
+var sm : StateMachine
 
 func _ready() -> void:
     set_physics_process(false)
     set_process(false)
 
-func setup(sm_owner : Node) -> void:
+func setup(sm_owner : Node, sm : StateMachine) -> void:
     self.sm_owner = sm_owner
+    self.sm = sm
 
+func on_ready() -> void:
+    pass
 
 func on_enter() -> void:
     pass

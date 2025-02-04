@@ -27,70 +27,7 @@ script = ExtResource("2_ca84g")
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_ou1ea")]
-position = Vector2(485, 194)
-
-[node name="ghost" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(531, 318)
-
-[node name="ghost2" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(638, 148)
-
-[node name="ghost3" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(389, 203)
-
-[node name="ghost4" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(366, 287)
-
-[node name="ghost5" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(439, 328)
-
-[node name="ghost19" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(622, 284)
-
-[node name="ghost20" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(558, 76)
-
-[node name="ghost21" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(409, 82)
-
-[node name="ghost6" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(666, -326)
-
-[node name="ghost7" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(-74, 80)
-
-[node name="ghost16" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(166, -112)
-
-[node name="ghost17" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(22, -216)
-
-[node name="ghost18" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(105, -392)
-
-[node name="ghost8" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(1084, -42)
-
-[node name="ghost9" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(1788, -30)
-
-[node name="ghost10" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(2162, 174)
-
-[node name="ghost11" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(2086, 224)
-
-[node name="ghost12" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(2162, 272)
-
-[node name="ghost13" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(2226, 218)
-
-[node name="ghost14" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(2238, 284)
-
-[node name="ghost15" parent="." instance=ExtResource("4_kgev8")]
-position = Vector2(2272, 170)
+position = Vector2(205, 238)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -125,6 +62,71 @@ text = "Retry"
 layout_mode = 2
 text = "Exit
 "
+
+[node name="mobs" type="Node" parent="."]
+
+[node name="ghost" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(531, 318)
+
+[node name="ghost2" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(638, 148)
+
+[node name="ghost3" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(389, 203)
+
+[node name="ghost4" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(366, 287)
+
+[node name="ghost5" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(439, 328)
+
+[node name="ghost19" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(622, 284)
+
+[node name="ghost20" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(558, 76)
+
+[node name="ghost21" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(409, 82)
+
+[node name="ghost6" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(666, -326)
+
+[node name="ghost7" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(-74, 80)
+
+[node name="ghost16" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(166, -112)
+
+[node name="ghost17" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(22, -216)
+
+[node name="ghost18" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(105, -392)
+
+[node name="ghost8" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(1084, -42)
+
+[node name="ghost9" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(1788, -30)
+
+[node name="ghost10" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(2162, 174)
+
+[node name="ghost11" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(2086, 224)
+
+[node name="ghost12" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(2162, 272)
+
+[node name="ghost13" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(2226, 218)
+
+[node name="ghost14" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(2238, 284)
+
+[node name="ghost15" parent="mobs" instance=ExtResource("4_kgev8")]
+position = Vector2(2272, 170)
 
 [connection signal="pressed" from="CanvasLayer/game_over/VBoxContainer/Retry" to="CanvasLayer/game_over" method="_on_retry_pressed"]
 [connection signal="pressed" from="CanvasLayer/game_over/VBoxContainer/Exit" to="CanvasLayer/game_over" method="_on_exit_pressed"]

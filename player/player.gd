@@ -8,8 +8,10 @@ class_name Player
 @export var sprite : Sprite2D
 @export var gun_anchor : Node2D
 @export var gun : Gun
+@export var anim_player : AnimationPlayer
 @export var health : Health
-
+@export var hurtbox : Hurtbox
+@export var hurtbox_collision_shape : CollisionShape2D
 
 var facing_direction = 1
 
@@ -22,3 +24,4 @@ func _on_health_on_health_runout() -> void:
 
 func _on_hurtbox_on_hit(damage_info:DamageInfo) -> void:
 	health.health -= damage_info.amount
+	

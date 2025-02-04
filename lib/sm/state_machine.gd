@@ -13,8 +13,9 @@ func _ready() -> void:
 	var parent = self.get_parent()
 	assert(parent != null, "State Machine should have a parent.")
 	for state in child_states:
-		state.setup(parent)
-
+		state.setup(parent, self)
+	for state in child_states:
+		state.on_ready()
 	if initial_state == null:
 		initial_state = child_states[0]
 
