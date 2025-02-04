@@ -24,5 +24,6 @@ func on_process(delta: float) -> RState:
 func on_physics_process(delta:  float) -> RState:
     return null
 
-
+func on_unhandled_input(event: InputEvent) -> RState:
+    return null
 
